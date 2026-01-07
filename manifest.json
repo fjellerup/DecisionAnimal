@@ -2,7 +2,7 @@
   "name": "Decision Oracle",
   "short_name": "Decision",
   "description": "A fun decision-making app with animals",
-  "start_url": "/Decisionanimal/",
+  "start_url": "/DecisionAnimal/",
   "display": "standalone",
   "background_color": "#fafafa",
   "theme_color": "#1a1a1a",
