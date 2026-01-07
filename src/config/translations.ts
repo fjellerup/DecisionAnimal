@@ -7,9 +7,13 @@ export interface Language {
 export const languages: Language[] = [
   { code: 'en', name: 'English', flag: '🇬🇧' },
   { code: 'da', name: 'Dansk', flag: '🇩🇰' },
-  { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
-  { code: 'es', name: 'Español', flag: '🇪🇸' },
 ];
+
+export function getBrowserLanguage(): string {
+  const browserLang = navigator.language.split('-')[0];
+  const supported = languages.map(l => l.code);
+  return supported.includes(browserLang) ? browserLang : 'en';
+}
 
 export interface Translations {
   title: string;
@@ -87,56 +91,6 @@ export const translations: { [lang: string]: Translations } = {
     confetti: 'Konfetti',
     save: 'Gem',
     cancel: 'Annuller',
-  },
-  de: {
-    title: 'Entscheidungs {animal}',
-    subtitle: 'Lass das {animal} dein Schicksal entscheiden',
-    askButton: 'Frag das {animal}',
-    deciding: 'Überlegt...',
-    result: 'Das {animal} sagt:',
-    disclaimer: '* 100% genau nach {animal}-Logik *',
-    settings: 'Einstellungen',
-    language: 'Sprache',
-    animal: 'Tier',
-    spinDuration: 'Spin Dauer',
-    fast: 'Schnell',
-    slow: 'Langsam',
-    decisions: 'Entscheidungen',
-    addDecision: 'Entscheidung Hinzufügen',
-    edit: 'Bearbeiten',
-    delete: 'Löschen',
-    reset: 'Alles Zurücksetzen',
-    text: 'Text',
-    color: 'Farbe',
-    buttonColor: 'Knopf Farbe',
-    confetti: 'Konfetti',
-    save: 'Speichern',
-    cancel: 'Abbrechen',
-  },
-  es: {
-    title: '{animal} de Decisión',
-    subtitle: 'Deja que el {animal} decida tu destino',
-    askButton: 'Pregunta al {animal}',
-    deciding: 'Decidiendo...',
-    result: 'El {animal} dice:',
-    disclaimer: '* 100% preciso según la lógica del {animal} *',
-    settings: 'Ajustes',
-    language: 'Idioma',
-    animal: 'Animal',
-    spinDuration: 'Duración del Giro',
-    fast: 'Rápido',
-    slow: 'Lento',
-    decisions: 'Decisiones',
-    addDecision: 'Añadir Decisión',
-    edit: 'Editar',
-    delete: 'Eliminar',
-    reset: 'Restablecer Todo',
-    text: 'Texto',
-    color: 'Color',
-    buttonColor: 'Color del Botón',
-    confetti: 'Confeti',
-    save: 'Guardar',
-    cancel: 'Cancelar',
   },
 };
 

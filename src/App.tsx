@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect, useRef, useMemo } from 'react';
 import { SimpleDecision, loadDecisions, saveDecisions, getDefaultDecisions, generateId } from './config/decisions';
 import { animals, Animal } from './config/animals';
-import { languages, t } from './config/translations';
+import { languages, t, getBrowserLanguage } from './config/translations';
 import { launchConfetti } from './confetti';
 import { playTickSound, playDingSound, playWinSound } from './sounds';
 import './App.css';
@@ -18,7 +18,7 @@ function App() {
     return stored ? parseInt(stored) : 50;
   });
 
-  const [language, setLanguage] = useState(() => localStorage.getItem('language') || 'en');
+  const [language, setLanguage] = useState(() => localStorage.getItem('language') || getBrowserLanguage());
   const [animal, setAnimal] = useState<Animal>(() => {
     const savedAnimalId = localStorage.getItem('animal');
     return animals.find(a => a.id === savedAnimalId) || animals[0];
